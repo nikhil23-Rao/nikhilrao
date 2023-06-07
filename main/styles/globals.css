@@ -1,9 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    overflow: hidden;
 }
 
 a {
@@ -16,6 +20,24 @@ a {
 }
 
 
+.link-underline {
+  border-bottom-width: 0;
+  background-image: linear-gradient(transparent, transparent), linear-gradient(#fff, #fff);
+  background-size: 0 2px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size .3s ease-in-out;
+}
+
+.link-underline-black {
+  background-image: linear-gradient(transparent, transparent), linear-gradient(#000, #000);
+}
+
+.link-underline:hover {
+  background-size: 100% 2px;
+  background-position: 0 100%
+}
+
 .bottom-layer {
   position: absolute;
   width: 100%;
@@ -24,17 +46,17 @@ a {
   left: 0;
   bottom: auto;
   right: auto;
-  background: #DC2A7B;
+  background: #FF5152;
   transition: all 0.7s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 .bottom-layer.active {
   top: -100%;
 }
 .bottom-layer--2 {
-  background: #8135AE;
+  background: #38A4FE;
   transition-delay: 0.12s;
 }
 .bottom-layer--3 {
-  background: #F5842B;
+  background: #f5b22b;
   transition-delay: 0.26s;
 }

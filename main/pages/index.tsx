@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
+import { Navigation } from "../components/Navigation";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
@@ -20,29 +21,33 @@ const Home: NextPage = () => {
   }, [showTransition]);
 
   return (
-    <div className={styles.logo} style={{ marginTop: 150 }}>
+    <div style={{ height: "100vh", overflow: "hidden" }}>
       {showContent ? (
-        <h1>main content here</h1>
+        <>
+          <Navigation />
+        </>
       ) : (
-        <svg className={styles.text} id="text" viewBox="0 0 850 125">
-          <defs>
-            <linearGradient id="gradient" y1="0" y2="1">
-              <stop stop-color="#000" offset="0" />
-            </linearGradient>
-          </defs>
-          <text
-            fill="none"
-            stroke="url(#gradient)"
-            transform="translate(3 102)"
-            stroke-width="3"
-            fontSize="134"
-            fontWeight="800"
-            letterSpacing="0.1em"
-            className={styles.isActive}
-          >
-            <tspan>Nikhil Rao</tspan>
-          </text>
-        </svg>
+        <div className={styles.logo} style={{ marginTop: -20 }}>
+          <svg className={styles.text} id="text" viewBox="0 0 850 125">
+            <defs>
+              <linearGradient id="gradient" y1="0" y2="1">
+                <stop stop-color="#000" offset="0" />
+              </linearGradient>
+            </defs>
+            <text
+              fill="none"
+              stroke="url(#gradient)"
+              transform="translate(3 102)"
+              stroke-width="3"
+              fontSize="134"
+              fontWeight="800"
+              letterSpacing="0.1em"
+              className={styles.isActive}
+            >
+              <tspan>Nikhil Rao</tspan>
+            </text>
+          </svg>
+        </div>
       )}
       <div className="container">
         <div className={`bottom-layer ${showTransition ? "active" : ""}`}></div>

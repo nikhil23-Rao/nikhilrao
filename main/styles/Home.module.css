@@ -24,7 +24,7 @@
   height: 100vh;
   margin: 0;
   place-items: center center;
-  overflow: hidden;
+  overflow-y: hidden;
 }
 .logo .icon path {
   stroke-width: 3px;
