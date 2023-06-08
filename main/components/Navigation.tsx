@@ -7,7 +7,7 @@ const NavLinks = [
   },
   {
     href: "/aboutme",
-    name: "About me",
+    name: "About",
   },
   {
     href: "/projects",

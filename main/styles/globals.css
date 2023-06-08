@@ -8,6 +8,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     overflow-x: hidden;
+    overflow: hidden;
 }
 
 a {
@@ -452,6 +453,9 @@ nav {
   margin: var(--20px) auto 0;
   position: relative;
   z-index: var(--zindex-nav);
+  background: var(--color-backdrop);
+  width: 400px;
+  border-radius: 200px;
 }
 
 nav > ul {
@@ -1240,6 +1244,7 @@ li > a {
   letter-spacing: -4px;
   position: relative;
   padding: 12rem 0 3rem; 
+  z-index: 200;
 }
 
 .gradientbg {
@@ -1849,4 +1854,62 @@ li > a {
 	100% {
 		background-position: 0% 50%;
 	}
+}
+
+
+
+.animatein {
+  animation: fadeIn ease 0.4s;
+}
+
+
+@keyframes fadeIn{
+  0% {
+    opacity:0;
+  }
+  
+  100% {
+    opacity:1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+.animatein > * {
+  z-index: 200;
+  color:#fff;
 }

@@ -10,14 +10,14 @@ const Home: NextPage = () => {
   useEffect(() => {
     setTimeout(() => {
       setShowTransition(true);
-    }, 6000);
+    }, 5500);
   }, [typeof window]);
 
   useEffect(() => {
     if (showTransition) {
       setTimeout(() => {
         setShowContent(true);
-      }, 720);
+      }, 660);
     }
   }, [showTransition]);
 
@@ -27,6 +27,7 @@ const Home: NextPage = () => {
         height: "100vh",
         backgroundColor: "#1c1c1c",
         zIndex: 400,
+        overflowY: showContent ? "scroll" : "hidden",
       }}
     >
       {showContent ? (
@@ -38,50 +39,52 @@ const Home: NextPage = () => {
             </div>
           </div>
           <Navigation />
-          <h1
-            className="gradient"
-            style={{ color: "#fff", zIndex: 200, marginBottom: -200 }}
-          >
-            Hello. I'm Nikhil,
-          </h1>
-          <p
-            className="gradient"
-            style={{
-              marginTop: 0,
-              color: "#56A5BD",
-              zIndex: 200,
-            }}
-          >
-            A{" "}
-            <Typed
-              strings={["Developer.", "Student.", "Hooper."]}
+          <div className="animatein">
+            <h1
               className="gradient"
-              typeSpeed={75}
-              backSpeed={70}
-              loop
-              style={{ color: "#56A5BD", zIndex: 200 }}
-            />
-          </p>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
+              style={{ color: "#fff", zIndex: 200, marginBottom: -200 }}
+            >
+              Hello. I'm Nikhil,
+            </h1>
             <p
+              className="gradient"
               style={{
-                color: "#fff",
-                maxWidth: 800,
-                textAlign: "center",
-                fontSize: 20,
-                marginTop: 10,
+                marginTop: 0,
+                color: "#56A5BD",
+                zIndex: 200,
               }}
             >
-              I am a passionate developer, and a Sophmore in highschool. In my
-              freetime I love to play basketball, listen to music, and try new
-              foods.
+              A{" "}
+              <Typed
+                strings={["Developer.", "Student.", "Hooper."]}
+                className="gradient"
+                typeSpeed={75}
+                backSpeed={70}
+                loop
+                style={{ color: "#56A5BD", zIndex: 200 }}
+              />
             </p>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <p
+                style={{
+                  color: "#fff",
+                  maxWidth: 800,
+                  textAlign: "center",
+                  fontSize: 20,
+                  marginTop: 10,
+                }}
+              >
+                I am a passionate developer, and a Sophmore in highschool. In my
+                freetime I love to play basketball, listen to music, and try new
+                foods.
+              </p>
+            </div>
           </div>
         </>
       ) : (
