@@ -8,7 +8,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     overflow-x: hidden;
-    overflow: hidden;
+    overflow-y: hidden !important;
 }
 
 a {
@@ -418,7 +418,7 @@ nav {
   --color-gradient: linear-gradient( to bottom, hsla(158, 23%, 18%, 0) 0%, hsla(158, 23%, 18%, .013) 9.7%, hsla(158, 23%, 18%, .049) 18.1%, hsla(158, 23%, 18%, .104) 25.5%, hsla(158, 23%, 18%, .175) 31.9%, hsla(158, 23%, 18%, .259) 37.7%, hsla(158, 23%, 18%, .352) 43%, hsla(158, 23%, 18%, .45) 47.9%, hsla(158, 23%, 18%, .55) 52.8%, hsla(158, 23%, 18%, .648) 57.7%, hsla(158, 23%, 18%, .741) 63%, hsla(158, 23%, 18%, .825) 68.7%, hsla(158, 23%, 18%, .896) 75%, hsla(158, 23%, 18%, .951) 82.2%, hsla(158, 23%, 18%, .987) 90.5%, hsl(158, 23%, 18%) 100% );
   --color-white30: hsla(160, 52%, 71%, .05);
   --color-white50: hsla(160, 52%, 71%, .1);
-  --color-backdrop: hsla(158, 23%, 18%, .7);
+  --color-backdrop: hsla(160, 74%, 10%, 0.7);
   --color-primary-border: hsla(160, 52%, 71%, .2);
   --color-text-primary: var(--color-green400);
   --color-text-secondary: var(--color-green300);
@@ -453,7 +453,7 @@ nav {
   margin: var(--20px) auto 0;
   position: relative;
   z-index: var(--zindex-nav);
-  background: var(--color-backdrop);
+  background-color: var(--color-backdrop);
   width: 400px;
   border-radius: 200px;
 }
@@ -650,7 +650,7 @@ nav > ul {
   border-radius: 50px;
   transition: all .2s linear;
   display: flex;
-  list-style-type: none;
+  /* list-style-type: none; */
 }
 
 ul > li {
@@ -837,7 +837,7 @@ ul > li {
   font-size: var(--16px);
   color: var(--color-text-primary);
   font-feature-settings: "liga" on;
-  list-style-type: none;
+  /* list-style-type: none; */
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -1027,7 +1027,7 @@ li > a {
   line-height: 1.5;
   font-family: var(--bodyFont);
   font-feature-settings: "liga" on;
-  list-style-type: none;
+  /* list-style-type: none; */
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -1913,3 +1913,96 @@ li > a {
   z-index: 200;
   color:#fff;
 }
+
+
+.adaptive-glass {
+  --glass-lightness: 100%;
+  background: hsl(0 0% var(--glass-lightness) / 50%);
+  -webkit-backdrop-filter: blur(40px);
+          backdrop-filter: blur(40px);
+}
+  
+  @media (prefers-color-scheme: dark) {.adaptive-glass {
+    --glass-lightness: 0%
+}
+  }
+  
+  @supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {.adaptive-glass {
+    background: hsl(0 0% var(--glass-lightness) / 90%)
+}
+  }
+
+figure {
+  --on-glass-primary: hsl(220 50% 20%);
+  --on-glass-secondary: hsl(220 40% 30%);
+  
+  border-radius: .5ch;
+  overflow: hidden;
+  
+  /*  https://shadows.brumm.af/  */
+  box-shadow:
+    0 3px   2px  hsl(0 0% 0% / 2%),
+    0 7px   5px  hsl(0 0% 0% / 3%),
+    0 13px  10px hsl(0 0% 0% / 4%),
+    0 22px  18px hsl(0 0% 0% / 5%),
+    0 42px  33px hsl(0 0% 0% / 6%),
+    0 100px 80px hsl(0 0% 0% / 7%)
+  ;
+}
+
+@media (prefers-color-scheme: dark) {
+
+figure {
+    --on-glass-primary: hsl(220 50% 90%);
+    --on-glass-secondary: hsl(220 30% 75%)
+}
+  }
+
+figure img {
+    display: block;
+    inline-size: 100%;
+    block-size: auto;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+
+figcaption {
+  display: grid;
+  grid: [stack] 1fr / [stack] 1fr;
+  position: relative;
+}
+
+figcaption > * {
+    grid-area: stack;
+  }
+
+figcaption > img {
+    position: absolute;
+    inset: 0;
+    /*   reflect hero image for a nice effect!   */
+    transform: scaleY(-1);
+  }
+
+figcaption > section {
+    z-index: 1;
+    padding-inline: 2ch;
+    padding-block: 2ch 2.5ch;
+    color: var(--on-glass-primary);
+    display: grid;
+    gap: 1ch;
+  }
+
+@media (prefers-color-scheme: dark) {
+
+figcaption > section {
+      text-shadow: 0 1px 0 hsl(0 0% 0% / 20%)
+  }
+    }
+
+figcaption h3 {
+    font-size: clamp(1.25rem, calc(1rem + 2vw), 2.5rem);
+  }
+
+figcaption date {
+    color: var(--on-glass-secondary);
+  }
