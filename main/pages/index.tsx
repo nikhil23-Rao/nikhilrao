@@ -273,8 +273,52 @@ const Home: NextPage = () => {
                   </div>
                 </div>
               </section>
+
+              <main>
+                <footer id="site__footer" className="footer">
+                  <section className="footer__top">
+                    <div className="footer__inner">
+                      <p className="text--small">Want to get in touch?</p>
+                      <h2 className="section__title">
+                        <a href="#">Email me here</a>
+                      </h2>
+                    </div>
+                  </section>
+                  <section>
+                    <div className="footer__inner">
+                      <h1>Spotify</h1>
+                      <div className="row"></div>
+                      <div className="row">
+                        <div className="col-xs-6">
+                          <p className="text--smaller text--light">
+                            Nam nec tellus et tellus tempor auctor. Fusce sit
+                            amet dui elit. Fusce eget urna aliquam, lobortis dui
+                            nec, malesuada dui. Proin nec leo accumsan, gravida
+                            sem ac, tristique sapien. Aenean ornare nisi vitae
+                            sollicitudin dignissim. Aliquam libero massa, varius
+                            imperdiet libero eget, gravida suscipit urna.
+                          </p>
+                        </div>
+                        <div className="col-xs-6 col-sm-offset-3 col-sm-3">
+                          <p className="text--light text--smaller">
+                            Copyright 20222 Company Inc. All rights something.
+                          </p>
+                          <p>
+                            <a href="#" className="link--light text--smaller">
+                              Terms and Conditions
+                            </a>{" "}
+                            |{" "}
+                            <a href="#" className="link--light text--smaller">
+                              Privacy Policy
+                            </a>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                </footer>
+              </main>
             </div>
-            <div style={{ width: 200, marginTop: 2000 }}></div>
           </div>
         </>
       ) : (
