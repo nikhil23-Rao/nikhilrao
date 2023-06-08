@@ -47,7 +47,7 @@
   stroke-dashoffset: -800;
   transition: 0.9s ease-out;
   stroke-dasharray: 800;
-
+color:#fff;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 .logo .text text.isActive {
@@ -68,7 +68,7 @@
   }
   100% {
     stroke-dashoffset: 0;
-    fill: #000;
+    fill: #fff;
     stroke-width: 0px;
     animation: fadeOutLeft 5s 2s 1 forwards forwards;
   }
