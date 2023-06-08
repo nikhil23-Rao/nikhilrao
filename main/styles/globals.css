@@ -47,18 +47,18 @@ a {
   left: 0;
   bottom: auto;
   right: auto;
-  background: #FF5152;
+  background: #A93E69;
   transition: all 0.7s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 .bottom-layer.active {
   top: -100%;
 }
 .bottom-layer--2 {
-  background: #38A4FE;
+  background: #337F9F;
   transition-delay: 0.12s;
 }
 .bottom-layer--3 {
-  background: #f5b22b;
+  background: #25A28E;
   transition-delay: 0.26s;
 }
 

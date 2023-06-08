@@ -107,7 +107,7 @@ const Home: NextPage = () => {
                 className="gradient"
                 style={{
                   marginTop: 0,
-                  color: "#2A9494",
+                  color: "lightgreen",
                   zIndex: 200,
                 }}
               >
@@ -118,7 +118,7 @@ const Home: NextPage = () => {
                   typeSpeed={75}
                   backSpeed={70}
                   loop
-                  style={{ color: "#2A9494", zIndex: 200 }}
+                  style={{ color: "lightgreen", zIndex: 200 }}
                 />
               </p>
               <div
@@ -259,6 +259,16 @@ const Home: NextPage = () => {
                           </li>
                         </div>
                       ))}
+                      <p
+                        style={{
+                          marginTop: 20,
+                          color: "lightgreen",
+                          textDecoration: "underline",
+                          cursor: "pointer",
+                        }}
+                      >
+                        View more in timeline
+                      </p>
                     </ul>
                   </div>
                 </div>
