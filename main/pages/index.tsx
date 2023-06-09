@@ -5,6 +5,7 @@ import { Navigation } from "../components/Navigation";
 import styles from "../styles/Home.module.css";
 import Lottie from "lottie-react";
 import lottieOne from "../public/lottieone.json";
+import { getTopTracks } from "../utils/connectSpotify";
 
 const Home: NextPage = () => {
   const options = {
@@ -17,6 +18,12 @@ const Home: NextPage = () => {
     setTimeout(() => {
       if (!show) setShowTransition(true);
     }, 5500);
+  }, []);
+
+  useEffect(() => {
+    getTopTracks().then((res) => {
+      console.log(res);
+    });
   }, []);
 
   useEffect(() => {
