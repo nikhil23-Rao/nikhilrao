@@ -13,10 +13,21 @@ const Home: NextPage = () => {
   const [showTransition, setShowTransition] = useState(false);
   const [showContent, setShowContent] = useState(false);
   useEffect(() => {
+    const show = localStorage.getItem("showContent");
     setTimeout(() => {
-      setShowTransition(true);
+      if (!show) setShowTransition(true);
     }, 5500);
-  }, [typeof window]);
+  }, []);
+
+  useEffect(() => {
+    const show = localStorage.getItem("showContent");
+    if (show) setShowContent(true);
+    else {
+      setTimeout(() => {
+        localStorage.setItem("showContent", "true");
+      }, 5000);
+    }
+  }, []);
 
   useEffect(() => {
     if (showTransition) {
@@ -142,7 +153,7 @@ const Home: NextPage = () => {
                   try new foods.
                 </p>
               </div>
-              <section style={{ marginTop: 10, zIndex: 500 }}>
+              <section style={{ marginTop: 10, zIndex: 500, padding: 40 }}>
                 <div
                   style={{
                     display: "flex",
@@ -185,7 +196,7 @@ const Home: NextPage = () => {
                         />
                         <section className="adaptive-glass">
                           <h3>{project.name}</h3>
-                          <p>{project.description}</p>
+                          <p style={{ color: "#fff" }}>{project.description}</p>
                         </section>
                       </figcaption>
                     </figure>
@@ -196,7 +207,7 @@ const Home: NextPage = () => {
                   ></i>
                 </div>
               </section>
-              <section style={{ marginTop: 10, zIndex: 500 }}>
+              <section style={{ marginTop: 10, zIndex: 500, padding: 40 }}>
                 <div
                   style={{
                     display: "flex",

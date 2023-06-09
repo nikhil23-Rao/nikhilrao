@@ -6,7 +6,7 @@ const NavLinks = [
     name: "Home",
   },
   {
-    href: "/aboutme",
+    href: "/about",
     name: "About",
   },
   {
@@ -27,7 +27,9 @@ export const Navigation = () => {
           <ul>
             {NavLinks.map((link) => (
               <li>
-                <a href={link.href}>{link.name}</a>
+                <NextLink href={link.href}>
+                  <a>{link.name}</a>
+                </NextLink>
               </li>
             ))}
           </ul>
