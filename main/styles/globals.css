@@ -1,6 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 html,
 body {
   padding: 0;
@@ -2113,7 +2110,6 @@ figure {
   border-radius: .5ch;
   overflow: hidden;
   
-  /*  https://shadows.brumm.af/  */
   box-shadow:
     0 3px   2px  hsl(0 0% 0% / 2%),
     0 7px   5px  hsl(0 0% 0% / 3%),
@@ -3652,3 +3648,4 @@ figcaption date {
     padding: 8px 18px;
   }
 }
+

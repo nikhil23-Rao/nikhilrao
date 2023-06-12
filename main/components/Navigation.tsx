@@ -27,9 +27,7 @@ export const Navigation = () => {
           <ul>
             {NavLinks.map((link, idx) => (
               <li key={idx}>
-                <NextLink href={link.href}>
-                  <a>{link.name}</a>
-                </NextLink>
+                <NextLink href={link.href}>{link.name}</NextLink>
               </li>
             ))}
           </ul>
