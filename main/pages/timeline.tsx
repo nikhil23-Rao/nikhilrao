@@ -222,6 +222,7 @@ const Timeline = () => {
         <VerticalTimeline>
           {timelineData.map((t) => (
             <VerticalTimelineElement
+              key={t.date}
               className="vertical-timeline-element--work"
               contentStyle={{ background: "#254237" }}
               contentArrowStyle={{ borderRight: "7px solid  #fff" }}

@@ -97,7 +97,7 @@ const Home: NextPage = () => {
                 className="gradient"
                 style={{ color: "#fff", zIndex: 200, marginBottom: -200 }}
               >
-                Hello. I'm Nikhil,
+                Hello. I am Nikhil,
               </h1>
               <p
                 className="gradient"
@@ -165,6 +165,7 @@ const Home: NextPage = () => {
                   {projects.map((project) => (
                     <figure
                       style={{ width: 450, margin: 50, cursor: "pointer" }}
+                      key={project.description}
                     >
                       <picture>
                         <img
@@ -242,7 +243,7 @@ const Home: NextPage = () => {
                       }}
                     >
                       {experience.map((e) => (
-                        <div style={{ display: "inline" }}>
+                        <div style={{ display: "inline" }} key={e}>
                           <li
                             style={{
                               color: "#fff",
@@ -322,14 +323,14 @@ const Home: NextPage = () => {
           <svg className={styles.text} id="text" viewBox="0 0 850 125">
             <defs>
               <linearGradient id="gradient" y1="0" y2="1">
-                <stop stop-color="#fff" offset="0" />
+                <stop stopColor="#fff" offset="0" />
               </linearGradient>
             </defs>
             <text
               fill="none"
               stroke="url(#gradient)"
               transform="translate(3 102)"
-              stroke-width="3"
+              strokeWidth="3"
               fontSize="134"
               fontWeight="800"
               letterSpacing="0.1em"

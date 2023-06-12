@@ -1,10 +1,5 @@
 import type { NextPage } from "next";
-import Typed from "react-typed";
-import { useEffect, useState } from "react";
 import { Navigation } from "../components/Navigation";
-import styles from "../styles/Home.module.css";
-import Lottie from "lottie-react";
-import lottieOne from "../public/lottieone.json";
 
 const About: NextPage = () => {
   const traits = [
@@ -100,7 +95,7 @@ const About: NextPage = () => {
               textAlign: "left",
             }}
           >
-            I'm Nikhil.
+            I Am Nikhil.
           </h1>
           <p
             style={{
@@ -149,7 +144,7 @@ const About: NextPage = () => {
 
       <div className="gridlayout">
         {traits.map((t) => (
-          <div>
+          <div key={JSON.stringify(t)}>
             <div className="griditem">
               <div
                 style={{

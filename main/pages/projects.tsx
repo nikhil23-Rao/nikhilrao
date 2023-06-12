@@ -199,7 +199,10 @@ const Timeline = () => {
           .filter((p) => p.name.toLowerCase().includes(input.toLowerCase()))
           .map((project) => {
             return (
-              <div onClick={() => window.open(project.link)}>
+              <div
+                onClick={() => window.open(project.link)}
+                key={project.description}
+              >
                 <figure
                   style={{
                     width: 450,

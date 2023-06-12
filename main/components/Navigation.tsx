@@ -25,8 +25,8 @@ export const Navigation = () => {
       <header>
         <nav>
           <ul>
-            {NavLinks.map((link) => (
-              <li>
+            {NavLinks.map((link, idx) => (
+              <li key={idx}>
                 <NextLink href={link.href}>
                   <a>{link.name}</a>
                 </NextLink>
