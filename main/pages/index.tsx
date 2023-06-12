@@ -5,12 +5,9 @@ import { Navigation } from "../components/Navigation";
 import styles from "../styles/Home.module.css";
 import Lottie from "lottie-react";
 import lottieOne from "../public/lottieone.json";
-import { getTopTracks } from "../utils/connectSpotify";
+import { experience } from "../utils/experience";
 
 const Home: NextPage = () => {
-  const options = {
-    animationData: lottieOne,
-  };
   const [showTransition, setShowTransition] = useState(false);
   const [showContent, setShowContent] = useState(false);
   useEffect(() => {
@@ -18,12 +15,6 @@ const Home: NextPage = () => {
     setTimeout(() => {
       if (!show) setShowTransition(true);
     }, 5500);
-  }, []);
-
-  useEffect(() => {
-    getTopTracks().then((res) => {
-      console.log(res);
-    });
   }, []);
 
   useEffect(() => {
@@ -60,19 +51,6 @@ const Home: NextPage = () => {
       name: "ChatPad",
       description: "Real-time messaging to chat with others.",
     },
-  ];
-  const experience = [
-    "Programmer for 5 years",
-    `Proficient in Python, Javascript, Java, Typescript, SQL,
-  MongoDB, Firebase, NodeJS, GraphQL, ReactJS, React
-  Native, NextJS, HTML5, CSS3, Cloud Platforms and more!`,
-    `
-  Top 4 Finalist in annual Raspberry Pi Hackathon (2020)`,
-    `Participated in 4+ Hackathons`,
-    `  Summer Full Stack Developer for Livermore Shiva-Vishnu
-  Temple`,
-    `Competitive Robotics Member (Team 5776A)`,
-    `Robotics Summer Camp Mentor (2023)`,
   ];
 
   return (
