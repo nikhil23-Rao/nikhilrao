@@ -273,8 +273,8 @@ const Home: NextPage = () => {
           </div>
         </>
       ) : (
-        <div className={styles.logo} style={{ marginTop: -20 }}>
-          <svg className={styles.text} id="text" viewBox="0 0 850 125">
+        <div className="logo" style={{ marginTop: -20 }}>
+          <svg className="text" id="text" viewBox="0 0 850 125">
             <defs>
               <linearGradient id="gradient" y1="0" y2="1">
                 <stop stopColor="#fff" offset="0" />
