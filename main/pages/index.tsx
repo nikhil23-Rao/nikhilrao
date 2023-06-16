@@ -13,7 +13,7 @@ const Home: NextPage = () => {
     const show = localStorage.getItem("showContent");
     setTimeout(() => {
       if (!show) setShowTransition(true);
-    }, 5500);
+    }, 4500);
   }, []);
 
   useEffect(() => {
@@ -288,7 +288,7 @@ const Home: NextPage = () => {
               fontSize="134"
               fontWeight="800"
               letterSpacing="0.1em"
-              className={styles.isActive}
+              className="isActive"
             >
               <tspan>Nikhil Rao</tspan>
             </text>
