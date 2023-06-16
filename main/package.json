@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "engines": {
-    "node": "18.x"
+    "node": "16.14.0"
   },
   "dependencies": {
     "@merc/react-timeline": "^0.1.42",
