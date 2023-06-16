@@ -1,7 +1,9 @@
 import type { NextPage } from "next";
 import { Navigation } from "../components/Navigation";
+import { useMediaQuery } from "react-responsive";
 
 const About: NextPage = () => {
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
   const traits = [
     {
       name: "Hard Working",
@@ -78,7 +80,7 @@ const About: NextPage = () => {
             height: 800,
             borderRadius: 250,
             zIndex: 200,
-            display: "inline-block",
+            display: isTabletOrMobile ? "none" : "inline-block",
             marginRight: 200,
             border: "5px solid lightgreen",
           }}
@@ -175,6 +177,7 @@ const About: NextPage = () => {
                     marginLeft: 20,
                     border: "5px solid lightgreen",
                     objectFit: "cover",
+                    display: isTabletOrMobile ? "none" : "inline-block",
                   }}
                 />
               </div>

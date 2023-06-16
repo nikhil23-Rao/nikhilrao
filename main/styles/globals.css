@@ -625,7 +625,7 @@ nav {
   z-index: var(--zindex-nav);
   background-color: var(--color-backdrop);
   width: 28vw;
-  min-width: 400px;
+  min-width: 300px;
   border-radius: 200px;
 }
 
@@ -869,7 +869,7 @@ ul > li {
   --font-h2-display: clamp(1.875rem, 1.301rem + 2.449vw, 3.75rem);
   --14px: .875rem;
   --15px: .9375rem;
-  --16px: 1rem;
+  --16px: 0.5rem;
   --17px: 1.0625rem;
   --18px: 1.125rem;
   --19px: 1.1875rem;
@@ -3724,5 +3724,11 @@ color:#fff;
   to {
     opacity: 0;
     transform: translateX(-100%);
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  #lottie {
+    display:none;
   }
 }

@@ -5,8 +5,11 @@ import { Navigation } from "../components/Navigation";
 import styles from "../styles/Home.module.css";
 import Lottie from "lottie-react";
 import { experience } from "../utils/experience";
+import { useMediaQuery } from "react-responsive";
 
 const Home: NextPage = () => {
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1224px)" });
+  const isPortrait = useMediaQuery({ query: "(orientation: portrait)" });
   const [showTransition, setShowTransition] = useState(false);
   const [showContent, setShowContent] = useState(false);
   useEffect(() => {
@@ -158,48 +161,52 @@ const Home: NextPage = () => {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    flexDirection: "row",
                   }}
                 >
-                  {projects.map((project) => (
-                    <figure
-                      style={{ width: 450, margin: 50, cursor: "pointer" }}
-                      key={project.description}
-                    >
-                      <picture>
-                        <img
-                          src={`/cardbg${project.id}.jpeg`}
-                          alt="The Ramp game promotional image"
-                          style={{ width: "100%", height: 200 }}
-                        />
-                      </picture>
-                      <figcaption>
-                        <img
-                          src={`/cardbg${project.id}.jpeg`}
-                          aria-hidden="true"
-                          style={{ width: "100%" }}
-                        />
-                        <section className="adaptive-glass">
-                          <h3>{project.name}</h3>
-                          <p style={{ color: "#fff" }}>{project.description}</p>
-                        </section>
-                      </figcaption>
-                    </figure>
-                  ))}
-                  <i
-                    className="fa fa-arrow-circle-right fa-3x"
-                    style={{ cursor: "pointer" }}
-                  ></i>
+                  <div className="grid">
+                    {projects.map((project) => (
+                      <figure
+                        style={{ width: 450, cursor: "pointer" }}
+                        key={project.description}
+                      >
+                        <picture>
+                          <img
+                            src={`/cardbg${project.id}.jpeg`}
+                            alt="The Ramp game promotional image"
+                            style={{ width: "100%", height: 200 }}
+                          />
+                        </picture>
+                        <figcaption>
+                          <img
+                            src={`/cardbg${project.id}.jpeg`}
+                            aria-hidden="true"
+                            style={{ width: "100%" }}
+                          />
+                          <section className="adaptive-glass">
+                            <h3>{project.name}</h3>
+                            <p style={{ color: "#fff" }}>
+                              {project.description}
+                            </p>
+                          </section>
+                        </figcaption>
+                      </figure>
+                    ))}
+                  </div>
                 </div>
               </section>
-              <section style={{ marginTop: 10, zIndex: 500, padding: 40 }}>
+              <section
+                style={{
+                  marginTop: isPortrait ? 40 : isTabletOrMobile ? -410 : -610,
+                  zIndex: 500,
+                  padding: 40,
+                }}
+              >
                 <div
                   style={{
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     flexDirection: "column",
-                    marginBottom: -100,
                   }}
                 >
                   <h1
@@ -212,60 +219,75 @@ const Home: NextPage = () => {
                 <div
                   style={{
                     display: "flex",
-                    flexDirection: "row",
+                    // flexDirection: "row",
                   }}
                 >
                   <Lottie
                     animationData={require("../public/lottieone.json")}
                     style={{
-                      display: "inline-block",
+                      display: isPortrait ? "none" : "inline-block",
                       verticalAlign: "middle",
                     }}
+                    id="lottie"
                   />
                   <div
                     style={{
                       display: "flex",
                       flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
                     }}
                   >
-                    <h1 className="gradient" style={{ fontSize: "4vw" }}>
+                    <h1
+                      className="gradient"
+                      style={{ fontSize: "6vw", letterSpacing: 2 }}
+                    >
                       Years of Knowledge...
                     </h1>
-                    <ul
+                    <div
                       style={{
-                        listStyleType: "circle",
-                        maxWidth: 700,
                         display: "flex",
                         flexDirection: "column",
-                        alignContent: "center",
+                        alignItems: "center",
                         justifyContent: "center",
                       }}
                     >
-                      {experience.map((e) => (
-                        <div style={{ display: "inline" }} key={e}>
-                          <li
-                            style={{
-                              color: "#fff",
-                              fontSize: 23,
-                              listStyleType: "circle",
-                              marginBottom: 20,
-                            }}
-                          >
-                            {e}
-                          </li>
-                        </div>
-                      ))}
-                      <p
+                      <ul
                         style={{
-                          marginTop: 20,
-                          color: "lightgreen",
-                          textDecoration: "underline",
-                          cursor: "pointer",
+                          listStyleType: "circle",
+                          maxWidth: 700,
+                          display: "flex",
+                          flexDirection: "column",
+                          alignContent: "center",
+                          justifyContent: "center",
                         }}
                       >
-                        View more in timeline
-                      </p>
-                    </ul>
+                        {experience.map((e) => (
+                          <div style={{ display: "inline" }} key={e}>
+                            <li
+                              style={{
+                                color: "#fff",
+                                fontSize: 23,
+                                listStyleType: "circle",
+                                marginBottom: 20,
+                              }}
+                            >
+                              {e}
+                            </li>
+                          </div>
+                        ))}
+                        <p
+                          style={{
+                            marginTop: 20,
+                            color: "lightgreen",
+                            textDecoration: "underline",
+                            cursor: "pointer",
+                          }}
+                        >
+                          View more in timeline
+                        </p>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </section>
