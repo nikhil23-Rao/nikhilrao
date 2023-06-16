@@ -8,6 +8,9 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "engines": {
+    "node": "16.x"
+  },
   "dependencies": {
     "@merc/react-timeline": "^0.1.42",
     "@types/qs": "^6.9.7",
