@@ -22,16 +22,6 @@ export const getAuth = async () => {
     grant_type: "client_credentials",
   };
 
-  const tokenAlreadyInUse = localStorage.getItem("@spotifytoken");
-  console.log("AYYYYY", tokenAlreadyInUse);
-
-  if (tokenAlreadyInUse && JSON.parse(tokenAlreadyInUse!)) {
-    const time = JSON.parse(tokenAlreadyInUse).time;
-    if ((new Date().getTime() - new Date(time).getTime()) / 60000 <= 59) {
-      return JSON.parse(tokenAlreadyInUse).token;
-    }
-  }
-
   try {
     const response = await axios.post(
       "https://accounts.spotify.com/api/token",
@@ -39,31 +29,19 @@ export const getAuth = async () => {
       headers
     );
     console.log("DATA", response.data);
+    // const spotify: any = {
+    //   Authorization: "Bearer " + response.data.access_token,
+    // };
+    // const { data: results } = await axios.get(
+    //   `https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=3`,
+    //   { headers: spotify }
+    // );
+
+    // console.log("RES", results);
     let date = new Date();
-    await localStorage.setItem(
-      "@spotifytoken",
-      JSON.stringify({ token: response.data.access_token, time: date })
-    );
+
     return response.data.access_token;
   } catch (error) {
     console.log("ERROR", error);
   }
 };
-
-async function fetchWebApi() {
-  const token = await getAuth();
-  const headers: any = { Authorization: "Bearer " + token };
-
-  const { data } = await axios.get(
-    `https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=3`,
-    { headers: headers }
-  );
-
-  console.log("DATA", data);
-  return data;
-}
-
-export async function getTopTracks() {
-  // Endpoint reference : https://developer.spotify.com/documentation/web-api/reference/get-users-top-artists-and-tracks
-  return await fetchWebApi();
-}
