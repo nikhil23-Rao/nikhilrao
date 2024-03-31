@@ -15,6 +15,7 @@ const Home: NextPage = () => {
   const isPortrait = useMediaQuery({ query: "(orientation: portrait)" });
   const [showTransition, setShowTransition] = useState(false);
   const [showContent, setShowContent] = useState(false);
+  const [spotifyTracks, setSpotifyTracks] = useState<any>([]);
   useEffect(() => {
     const show = localStorage.getItem("showContent");
     setTimeout(() => {
@@ -41,24 +42,31 @@ const Home: NextPage = () => {
   }, [showTransition]);
 
   useEffect(() => {
-    // getAuth();
+    getAuth(setSpotifyTracks);
   }, []);
+
+  useEffect(() => {
+    console.log("tracks", spotifyTracks);
+  }, [spotifyTracks]);
 
   const projects = [
     {
       id: 1,
       name: "Categories",
       description: "A Wordle type thinking puzzle.",
+      link: "https://thecategoriesgame.vercel.app",
     },
     {
       id: 2,
       name: "Identified",
       description: "Identify music, any time, anywhere.",
+      link: "https://identified.vercel.app",
     },
     {
       id: 3,
       name: "ChatPad",
       description: "Real-time messaging to chat with others.",
+      link: "https://chatpad.vercel.app",
     },
   ];
 
@@ -176,6 +184,9 @@ const Home: NextPage = () => {
                       <figure
                         style={{ width: 450, cursor: "pointer" }}
                         key={project.description}
+                        onClick={() => {
+                          window.open(project.link);
+                        }}
                       >
                         <picture>
                           <img
@@ -284,16 +295,17 @@ const Home: NextPage = () => {
                             </li>
                           </div>
                         ))}
-                        <p
+                        <a
                           style={{
                             marginTop: 20,
                             color: "lightgreen",
                             textDecoration: "underline",
                             cursor: "pointer",
                           }}
+                          href="/timeline"
                         >
                           View more in timeline
-                        </p>
+                        </a>
                       </ul>
                     </div>
                   </div>
@@ -313,33 +325,97 @@ const Home: NextPage = () => {
                   </section>
                   <section>
                     <div className="footer__inner">
-                      <h1>Spotify</h1>
-                      <div className="row"></div>
-                      <div className="row">
-                        <div className="col-xs-6">
-                          <p className="text--smaller text--light">
-                            Nam nec tellus et tellus tempor auctor. Fusce sit
-                            amet dui elit. Fusce eget urna aliquam, lobortis dui
-                            nec, malesuada dui. Proin nec leo accumsan, gravida
-                            sem ac, tristique sapien. Aenean ornare nisi vitae
-                            sollicitudin dignissim. Aliquam libero massa, varius
-                            imperdiet libero eget, gravida suscipit urna.
-                          </p>
-                        </div>
-                        <div className="col-xs-6 col-sm-offset-3 col-sm-3">
-                          <p className="text--light text--smaller">
-                            Copyright 20222 Company Inc. All rights something.
-                          </p>
-                          <p>
-                            <a href="#" className="link--light text--smaller">
-                              Terms and Conditions
-                            </a>{" "}
-                            |{" "}
-                            <a href="#" className="link--light text--smaller">
-                              Privacy Policy
-                            </a>
-                          </p>
-                        </div>
+                      <h1>
+                        On Repeat
+                        <i
+                          className="fa fa-spotify"
+                          style={{
+                            marginLeft: 10,
+                            zoom: 1.4,
+                            cursor: "pointer",
+                          }}
+                          onClick={() => {
+                            window.open(
+                              `https://open.spotify.com/user/fv11u3u5a9qqcsfbiic2rqgx1?si=6c5e1b8f4fab4d16`
+                            );
+                          }}
+                        ></i>
+                      </h1>
+
+                      <div style={{ width: "100vw" }}>
+                        {spotifyTracks.slice(0, 5).map((song: any) => {
+                          return (
+                            <div className="card" style={{ marginRight: 50 }}>
+                              <div className="cover">
+                                <img
+                                  src={song.track.album.images[0].url}
+                                  alt="cover"
+                                />
+                                <div
+                                  className="play-icon"
+                                  onClick={() => {
+                                    window.open(
+                                      song.track.external_urls.spotify
+                                    );
+                                  }}
+                                >
+                                  <i className="fa fa-play"></i>
+                                </div>
+                              </div>
+                              <div className="card-content">
+                                <h4>
+                                  <a href="#">{song.track.name}</a>
+                                </h4>
+                                <p>
+                                  <a href="#">{song.track.album.name}</a>
+                                </p>
+                              </div>
+                            </div>
+                          );
+                        })}
+                        <h1>My Socials</h1>
+                        <ul className="myulli">
+                          <a
+                            href="https://www.instagram.com/nikhil23rao/"
+                            className="removefollowunderline"
+                          >
+                            <li className="instagramicon">
+                              <i
+                                className="fa fa-instagram"
+                                id="mysvgstyle"
+                              ></i>
+                              Instagram
+                            </li>
+                          </a>
+                          <a
+                            href="https://www.facebook.com/profile.php?id=100090418921435"
+                            className="removefollowunderline"
+                          >
+                            <li className="facebookicon">
+                              <i className="fa fa-facebook" id="mysvgstyle"></i>
+                              Facebook
+                            </li>
+                          </a>
+                          <a
+                            href="https://github.com/nikhil23-Rao"
+                            className="removefollowunderline"
+                          >
+                            <li className="youtubeicon">
+                              <i className="fa fa-github" id="mysvgstyle"></i>
+                              Github
+                            </li>
+                          </a>
+
+                          <a
+                            href="https://twitter.com/NikhilRao23"
+                            className="removefollowunderline"
+                          >
+                            <li className="twittericon">
+                              <i className="fa fa-twitter" id="mysvgstyle"></i>
+                              Twitter
+                            </li>
+                          </a>
+                        </ul>
                       </div>
                     </div>
                   </section>

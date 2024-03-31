@@ -36,6 +36,7 @@ const AnimatedStats: React.FC<AnimatedStatsProps> = ({
   };
   // Mobile Friendly
   const isPortrait = useMediaQuery({ query: "(orientation: portrait)" });
+  const isTablet = useMediaQuery({ query: "(max-width:1424px)" });
 
   // On page load and when components update
 
@@ -48,7 +49,7 @@ const AnimatedStats: React.FC<AnimatedStatsProps> = ({
     <div
       style={{
         marginTop: 50,
-        height: isPortrait ? "150vh" : "",
+        height: isPortrait ? "2080px" : isTablet ? "1040px" : "740px",
         backgroundColor: "#90EE90",
       }}
       className="animatedstatscontainer text-center"
@@ -56,7 +57,7 @@ const AnimatedStats: React.FC<AnimatedStatsProps> = ({
     >
       <div>
         {statsData.map((stat, idx) => (
-          <div style={{ display: "inline-block", marginBottom: 100 }} key={idx}>
+          <div style={{ display: "inline-block", marginBottom: 220 }} key={idx}>
             <StatCard
               idx={idx}
               counter={stat.statNumber}

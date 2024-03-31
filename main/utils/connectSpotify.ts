@@ -4,7 +4,7 @@ import qs from "qs";
 
 // Authorization token that must have been created previously. See : https://developer.spotify.com/documentation/web-api/concepts/authorization
 
-export const getAuth = async () => {
+export const getAuth = async (setSpotifyTracks: any) => {
   const clientId = "c3d43ab64c8d4888ae5cb0a9b16a6ab7";
   const clientSecret = "6778a3231f8d40b08da5ab00617988c5";
 
@@ -29,15 +29,19 @@ export const getAuth = async () => {
       headers
     );
     console.log("DATA", response.data);
-    // const spotify: any = {
-    //   Authorization: "Bearer " + response.data.access_token,
-    // };
-    // const { data: results } = await axios.get(
-    //   `https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=3`,
-    //   { headers: spotify }
-    // );
+    const spotify: any = {
+      Authorization: "Bearer " + response.data.access_token,
+    };
+    console.log("spotify", spotify);
+    const { data: results } = await axios.get(
+      `https://api.spotify.com/v1/playlists/37i9dQZF1EpzdZMZimhQqe`,
+      { headers: spotify }
+    );
 
-    // console.log("RES", results);
+    console.log("RES", results);
+    if (results) {
+      setSpotifyTracks(results.tracks.items);
+    }
     let date = new Date();
 
     return response.data.access_token;

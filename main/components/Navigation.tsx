@@ -1,4 +1,5 @@
 import NextLink from "next/link";
+import { useMediaQuery } from "react-responsive";
 
 const NavLinks = [
   {
@@ -20,10 +21,11 @@ const NavLinks = [
 ];
 
 export const Navigation = () => {
+  const isPortrait = useMediaQuery({ query: "(orientation: portrait)" });
   return (
     <>
       <header>
-        <nav>
+        <nav style={{ width: isPortrait ? "450px" : "" }}>
           <ul>
             {NavLinks.map((link, idx) => (
               <li key={idx}>
