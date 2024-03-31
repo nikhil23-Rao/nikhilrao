@@ -302,7 +302,6 @@ const Home: NextPage = () => {
                             textDecoration: "underline",
                             cursor: "pointer",
                           }}
-                          href="/timeline"
                         >
                           View more in timeline
                         </a>
@@ -345,7 +344,11 @@ const Home: NextPage = () => {
                       <div style={{ width: "100vw" }}>
                         {spotifyTracks.slice(0, 5).map((song: any) => {
                           return (
-                            <div className="card" style={{ marginRight: 50 }}>
+                            <div
+                              className="card"
+                              style={{ marginRight: 50 }}
+                              key={song.track.name}
+                            >
                               <div className="cover">
                                 <img
                                   src={song.track.album.images[0].url}
